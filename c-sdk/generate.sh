@@ -1,1 +1,1 @@
-gcc -Wall -I include -I $JAVA_HOME/include -I $JAVA_HOME/include/linux -shared -o newrelicjni.so -fPIC newrelicjni.c
+gcc -Wall -shared -o newrelicjni.so newrelicjni.c -I $JAVA_HOME/include -I $JAVA_HOME/include/linux -I include -L. -lnewrelic -lpcre -lpthread -lm -rdynamic

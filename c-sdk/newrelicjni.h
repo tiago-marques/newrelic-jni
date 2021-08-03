@@ -2,8 +2,8 @@
 #include <jni.h>
 /* Header for class src_NewRelicJNI */
 
-#ifndef _Included_src_NewRelicJNI
-#define _Included_src_NewRelicJNI
+#ifndef _Included_com_dlocal_NewRelicJNI
+#define _Included_com_dlocal_NewRelicJNI
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -12,32 +12,35 @@ extern "C" {
  * Method:    init
  * Signature: (Ljava/lang/String;Ljava/lang/String;)V
  */
-JNIEXPORT void JNICALL Java_src_NewRelicJNI_init
-  (JNIEnv *, jobject, jstring, jstring);
+JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_init(JNIEnv*,
+                                                        jobject,
+                                                        jstring,
+                                                        jstring);
 
 /*
  * Class:     src_NewRelicJNI
  * Method:    startWebTransaction
  * Signature: (Ljava/lang/String;)V
  */
-JNIEXPORT void JNICALL Java_src_NewRelicJNI_startWebTransaction
-  (JNIEnv *, jobject, jstring);
+JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_startWebTransaction(JNIEnv*,
+                                                                       jobject,
+                                                                       jstring);
 
 /*
  * Class:     src_NewRelicJNI
  * Method:    endWebTransaction
  * Signature: (Ljava/lang/String;)V
  */
-JNIEXPORT void JNICALL Java_src_NewRelicJNI_endWebTransaction
-  (JNIEnv *, jobject, jstring);
+JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_endWebTransaction(JNIEnv*,
+                                                                     jobject,
+                                                                     jstring);
 
 /*
  * Class:     src_NewRelicJNI
  * Method:    destroy
  * Signature: ()V
  */
-JNIEXPORT void JNICALL Java_src_NewRelicJNI_destroy
-  (JNIEnv *, jobject);
+JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_destroy(JNIEnv*, jobject);
 
 #ifdef __cplusplus
 }
