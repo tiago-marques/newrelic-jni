@@ -1,0 +1,15 @@
+2021-08-03 12:47:02.510 -0300 (248515 248515) error: failed to connect to the daemon using a timeout of 0 ms at the path /tmp/.newrelic.sock
+2021-08-03 12:47:45.487 -0300 (248706 248706) info: newrelic initialized
+2021-08-03 12:47:55.537 -0300 (248706 248706) error: application was unable to connect
+2021-08-03 12:48:04.556 -0300 (248734 248734) info: newrelic initialized
+2021-08-03 12:48:04.558 -0300 (248734 248734) info: application native connected
+2021-08-03 12:48:06.559 -0300 (248734 248734) info: newrelic shutting down
+2021-08-03 12:49:25.412 -0300 (248854 248854) info: newrelic initialized
+2021-08-03 12:49:25.412 -0300 (248854 248854) info: application native connected
+2021-08-03 12:49:27.414 -0300 (248854 248854) info: newrelic shutting down
+2021-08-03 12:49:35.758 -0300 (248872 248872) info: newrelic initialized
+2021-08-03 12:49:35.760 -0300 (248872 248872) info: application native connected
+2021-08-03 12:49:37.762 -0300 (248872 248872) info: newrelic shutting down
+2021-08-03 12:49:52.374 -0300 (248907 248907) info: newrelic initialized
+2021-08-03 12:49:52.376 -0300 (248907 248907) info: application native connected
+2021-08-03 12:49:54.378 -0300 (248907 248907) info: newrelic shutting down
