@@ -12,7 +12,7 @@ extern "C" {
  * Method:    init
  * Signature: (Ljava/lang/String;Ljava/lang/String;)V
  */
-JNIEXPORT jobject JNICALL Java_com_dlocal_NewRelicJNI_init(JNIEnv*,
+JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_init(JNIEnv*,
                                                         jobject,
                                                         jstring,
                                                         jstring);

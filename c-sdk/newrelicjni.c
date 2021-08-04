@@ -12,7 +12,7 @@
 #include "newrelicjni.h"
 
 
-JNIEXPORT jobject JNICALL Java_com_dlocal_NewRelicJNI_init(JNIEnv* env,
+JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_init(JNIEnv* env,
                                                         jobject obj,
                                                         jstring appName,
                                                         jstring accountId) {
@@ -46,7 +46,10 @@ JNIEXPORT jobject JNICALL Java_com_dlocal_NewRelicJNI_init(JNIEnv* env,
   app = newrelic_create_app(config, 10000);
   newrelic_destroy_app_config(&config);
 
-  return (*env)->AllocObject(env, app);
+  jclass newrelicJava = (*env)->FindClass(env,"com.dlocal.NewRelicAppDumb");
+  jmethodID mSetDados = (*env)->GetMethodID(env, newrelicJava, "setApp", "(Ljava/lang/Object;)V");
+  (*env)->CallVoidMethod(env, obj, mSetDados, app);
+
 }
 
 
