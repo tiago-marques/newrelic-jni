@@ -8,12 +8,6 @@
 extern "C" {
 #endif
 
-typedef struct _transaction_t {
-  char *id;
-  newrelic_segment_t *seg;
-  newrelic_txn_t *txn
-} transaction_t;
-
 /*
  * Class:     src_NewRelicJNI
  * Method:    init
