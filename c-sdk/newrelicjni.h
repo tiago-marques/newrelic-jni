@@ -12,7 +12,7 @@ extern "C" {
  * Method:    init
  * Signature: (Ljava/lang/String;Ljava/lang/String;)V
  */
-JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_init(JNIEnv*,
+JNIEXPORT jobject JNICALL Java_com_dlocal_NewRelicJNI_init(JNIEnv*,
                                                         jobject,
                                                         jstring,
                                                         jstring);
@@ -22,8 +22,20 @@ JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_init(JNIEnv*,
  * Method:    startWebTransaction
  * Signature: (Ljava/lang/String;)V
  */
-JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_startWebTransaction(JNIEnv*,
+JNIEXPORT jobject JNICALL Java_com_dlocal_NewRelicJNI_startWebTransaction(JNIEnv*,
                                                                        jobject,
+                                                                       jstring,
+                                                                       jobject);
+
+                                                                       /*
+ * Class:     src_NewRelicJNI
+ * Method:    startSegment
+ * Signature: (Ljava/lang/String;)V
+ */
+JNIEXPORT jobject JNICALL Java_com_dlocal_NewRelicJNI_startSegment(JNIEnv*,
+                                                                       jobject,
+                                                                       jobject,
+                                                                       jstring,
                                                                        jstring);
 
 /*
@@ -33,14 +45,15 @@ JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_startWebTransaction(JNIEnv*,
  */
 JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_endWebTransaction(JNIEnv*,
                                                                      jobject,
-                                                                     jstring);
+                                                                     jobject,
+                                                                     jobject);
 
 /*
  * Class:     src_NewRelicJNI
  * Method:    destroy
  * Signature: ()V
  */
-JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_destroy(JNIEnv*, jobject);
+JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_destroy(JNIEnv*, jobject, jobject);
 
 #ifdef __cplusplus
 }

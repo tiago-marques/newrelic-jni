@@ -1,0 +1,1 @@
+gcc -Wall -shared -o newrelicjni.so newrelicjni.c -I $JAVA_HOME/include -I $JAVA_HOME/include/darwin -I include -L. -lnewrelic -lpcre -lpthread -lm -rdynamic
