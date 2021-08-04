@@ -22,19 +22,9 @@ JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_init(JNIEnv*,
  * Method:    startWebTransaction
  * Signature: (Ljava/lang/String;)V
  */
-JNIEXPORT jobject JNICALL Java_com_dlocal_NewRelicJNI_startWebTransaction(JNIEnv*,
+JNIEXPORT jstring JNICALL Java_com_dlocal_NewRelicJNI_startWebTransaction(JNIEnv*,
                                                                        jobject,
                                                                        jstring,
-                                                                       jobject);
-
-                                                                       /*
- * Class:     src_NewRelicJNI
- * Method:    startSegment
- * Signature: (Ljava/lang/String;)V
- */
-JNIEXPORT jobject JNICALL Java_com_dlocal_NewRelicJNI_startSegment(JNIEnv*,
-                                                                       jobject,
-                                                                       jobject,
                                                                        jstring,
                                                                        jstring);
 
@@ -45,15 +35,20 @@ JNIEXPORT jobject JNICALL Java_com_dlocal_NewRelicJNI_startSegment(JNIEnv*,
  */
 JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_endWebTransaction(JNIEnv*,
                                                                      jobject,
-                                                                     jobject,
-                                                                     jobject);
+                                                                     jstring);
 
 /*
  * Class:     src_NewRelicJNI
  * Method:    destroy
  * Signature: ()V
  */
-JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_destroy(JNIEnv*, jobject, jobject);
+JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_destroy(JNIEnv*, jobject);
+
+typedef struct _transaction_id {
+  const char* id;
+  newrelic_segment_t* seg;
+  newrelic_txn_t* txn
+} transaction_id;
 
 #ifdef __cplusplus
 }
