@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-
+#include <map>
 /*
  * A standalone example that demonstrates to users how to
  * configure logging, configure an app, connect an app,
@@ -12,6 +12,9 @@
 #include "newrelicjni.h"
 
 newrelic_app_t* app;
+
+struct hashmap *transactionmap = hashmap_new(sizeof(struct transaction_t), 0, 0, 0, 
+                                     transaction_hash, transaction_compare, NULL);
 
 JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_init(JNIEnv* env,
                                                         jobject obj,
@@ -55,6 +58,7 @@ Java_com_dlocal_NewRelicJNI_startWebTransaction(JNIEnv* env,
   newrelic_segment_t* seg;
   jboolean iscopy;
 
+
   const char* transactionId;
   const char* transactionN;
   const char* segmentN;
@@ -73,10 +77,7 @@ Java_com_dlocal_NewRelicJNI_startWebTransaction(JNIEnv* env,
   txn = newrelic_start_web_transaction(app, transactionN);
   seg = newrelic_start_segment(txn, segmentN, segmentC);
 
-  transaction_id transaction = {id, seg, txn};
-
-  // TODO
-  // Save on some kin of transaction list
+  hashmap_set(map, &(struct transaction_t){ .id=transactionId, .txn=txn, .seg=seg });
 
   return id;
 }
@@ -84,17 +85,44 @@ Java_com_dlocal_NewRelicJNI_startWebTransaction(JNIEnv* env,
 JNIEXPORT void JNICALL
 Java_com_dlocal_NewRelicJNI_endWebTransaction(JNIEnv* env,
                                               jobject obj,
-                                              jstring transactionId) {
+                                              jstring id) {
+
+  newrelic_txn_t* txn;
+  newrelic_segment_t* seg;
+  jboolean iscopy;
+
+  const char* transactionId;
+  transactionId = (*env)->GetStringUTFChars(env, id, &iscopy);
   // TODO
   // Recover from List of Transactions by id
-  // transactionId
-
+  struct transaction_t *transaction; 
+  transaction = hashmap_delete(map, &(struct transaction_t){ .id=transactionId });
   // TODO: remove dashes below
-  // newrelic_end_segment(txn, &seg);
-  // newrelic_end_transaction(&txn);
+  if(transaction){
+    txn = transaction.txn;
+    seg = transaction.seg;
+
+    newrelic_end_segment(txn, &seg);
+    newrelic_end_transaction(&txn); 
+  }
+  
 }
 
 JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_destroy(JNIEnv* env,
                                                            jobject obj) {
   newrelic_destroy_app(&app);
+  hashmap_free(transactionmap);
 }
+
+
+int transaction_compare(const void *a, const void *b, void *udata) {
+    const struct transaction_t *ua = a;
+    const struct transaction_t *ub = b;
+    return strcmp(ua->id, ub->id);
+}
+
+uint64_t transaction_hash(const void *item, uint64_t seed0, uint64_t seed1) {
+    const struct transaction_t *user = item;
+    return hashmap_sip(user->id, strlen(user->id), seed0, seed1);
+}
+
