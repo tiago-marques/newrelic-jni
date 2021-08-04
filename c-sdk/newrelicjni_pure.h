@@ -7,13 +7,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-typedef struct _transaction_id {
-  jstring id;
-  newrelic_segment_t* seg;
-  newrelic_txn_t* txn
-} transaction_id;
-
 /*
  * Class:     src_NewRelicJNI
  * Method:    init
@@ -29,13 +22,9 @@ JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_init(JNIEnv*,
  * Method:    startWebTransaction
  * Signature: (Ljava/lang/String;)V
  */
-JNIEXPORT jstring JNICALL
-Java_com_dlocal_NewRelicJNI_startWebTransaction(JNIEnv*,
-                                                jobject,
-                                                jstring,
-                                                jstring,
-                                                jstring,
-                                                jstring);
+JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_startWebTransaction(JNIEnv*,
+                                                                       jobject,
+                                                                       jstring);
 
 /*
  * Class:     src_NewRelicJNI
