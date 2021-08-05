@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+    newrelic-lib:
+        build: 
+            context: .
+        image: tiago-marques/newrelic-jni
+        volumes: 
+            - ./build:/shared/
