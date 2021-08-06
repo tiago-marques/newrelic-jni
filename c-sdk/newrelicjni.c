@@ -36,8 +36,8 @@ newrelic_app_t* app;
 JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_init(JNIEnv* env,
                                                         jobject obj,
                                                         jstring appName,
-                                                        jstring accountId
-                                                        jsting port) {
+                                                        jstring accountId,
+                                                        jstring port) {
   transactionmap = hashmap_new(sizeof(struct transaction_t), 0, 0, 0,
                                transaction_hash, transaction_compare, NULL);
 
@@ -81,7 +81,7 @@ Java_com_dlocal_NewRelicJNI_startWebTransaction(JNIEnv* env,
   newrelic_segment_t* seg;
   jboolean iscopy;
 
-  const char* transactionId;
+  char* transactionId;
   const char* transactionN;
   const char* segmentN;
   const char* segmentC;
@@ -113,7 +113,7 @@ Java_com_dlocal_NewRelicJNI_endWebTransaction(JNIEnv* env,
   newrelic_segment_t* seg;
   jboolean iscopy;
 
-  const char* transactionId;
+  char* transactionId;
   transactionId = (*env)->GetStringUTFChars(env, id, &iscopy);
   // TODO
   // Recover from List of Transactions by id
