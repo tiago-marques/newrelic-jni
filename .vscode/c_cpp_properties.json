@@ -4,9 +4,9 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/include",
-                "${JAVA_HOME}/include",
-                "${JAVA_HOME}/include/darwin"
+                "${workspaceFolder}/c-sdk/include",
+                "${env:JAVA_HOME}/include",
+                "${env:JAVA_HOME}/include/darwin"
             ],
             "defines": [],
             "macFrameworkPath": [
