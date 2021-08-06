@@ -59,14 +59,14 @@ JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_init(JNIEnv* env,
     printf("Error configuring logging.\n");
   }
 
-  if (!newrelic_init(NULL, 0)) {
+  if (!newrelic_init(portN, 0)) {
     printf("Error connecting to daemon.\n");
   }
 
   /* Wait up to 0 seconds for the SDK to connect to the daemon (Why 10 sec???? -
    * ANSWER doesnt impact transactions)
    */
-  app = newrelic_create_app(portN, 10000);
+  app = newrelic_create_app(config, 10000);
   newrelic_destroy_app_config(&config);
 }
 
