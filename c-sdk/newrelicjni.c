@@ -36,15 +36,18 @@ newrelic_app_t* app;
 JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_init(JNIEnv* env,
                                                         jobject obj,
                                                         jstring appName,
-                                                        jstring accountId) {
+                                                        jstring accountId,
+                                                        jstring port) {
   transactionmap = hashmap_new(sizeof(struct transaction_t), 0, 0, 0,
                                transaction_hash, transaction_compare, NULL);
 
   jboolean iscopy;
   const char* appN;
   const char* accountN;
+  const char* portN;
   appN = (*env)->GetStringUTFChars(env, appName, &iscopy);
   accountN = (*env)->GetStringUTFChars(env, accountId, &iscopy);
+  portN = (*env)->GetStringUTFChars(env, port, &iscopy);
   printf("App %s\n", appN);
   printf("Account %s\n", accountN);
 
@@ -63,7 +66,7 @@ JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_init(JNIEnv* env,
   /* Wait up to 0 seconds for the SDK to connect to the daemon (Why 10 sec???? -
    * ANSWER doesnt impact transactions)
    */
-  app = newrelic_create_app(config, 10000);
+  app = newrelic_create_app(portN, 10000);
   newrelic_destroy_app_config(&config);
 }
 
@@ -78,7 +81,7 @@ Java_com_dlocal_NewRelicJNI_startWebTransaction(JNIEnv* env,
   newrelic_segment_t* seg;
   jboolean iscopy;
 
-  const char* transactionId;
+  char* transactionId;
   const char* transactionN;
   const char* segmentN;
   const char* segmentC;
@@ -110,7 +113,7 @@ Java_com_dlocal_NewRelicJNI_endWebTransaction(JNIEnv* env,
   newrelic_segment_t* seg;
   jboolean iscopy;
 
-  const char* transactionId;
+  char* transactionId;
   transactionId = (*env)->GetStringUTFChars(env, id, &iscopy);
   // TODO
   // Recover from List of Transactions by id
