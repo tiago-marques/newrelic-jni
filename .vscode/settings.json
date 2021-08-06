@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "newrelicjni.h": "c",
+        "ios": "c",
+        "sstream": "c",
+        "__mutex_base": "c",
+        "atomic": "c",
+        "memory": "c",
+        "mutex": "c",
+        "libnewrelic.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
+}
