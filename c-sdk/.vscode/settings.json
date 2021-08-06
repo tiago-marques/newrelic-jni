@@ -5,6 +5,7 @@
     "files.associations": {
         "newrelicjni.h": "c",
         "jni.h": "c",
-        "libnewrelic.h": "c"
+        "libnewrelic.h": "c",
+        "stdlib.h": "c"
     }
 }
