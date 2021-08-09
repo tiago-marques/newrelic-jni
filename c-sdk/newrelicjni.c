@@ -48,8 +48,6 @@ JNIEXPORT void JNICALL Java_com_dlocal_NewRelicJNI_init(JNIEnv* env,
   appN = (*env)->GetStringUTFChars(env, appName, &iscopy);
   accountN = (*env)->GetStringUTFChars(env, accountId, &iscopy);
   portN = (*env)->GetStringUTFChars(env, port, &iscopy);
-  printf("App %s\n", appN);
-  printf("Account %s\n", accountN);
 
   newrelic_app_config_t* config;
 
@@ -91,10 +89,6 @@ Java_com_dlocal_NewRelicJNI_startWebTransaction(JNIEnv* env,
   segmentN = (*env)->GetStringUTFChars(env, segmentName, &iscopy);
   segmentC = (*env)->GetStringUTFChars(env, segmentCustom, &iscopy);
 
-  printf("Transaction Id %s\n", transactionId);
-  printf("Transaction Name %s\n", transactionN);
-  printf("Segment Name %s\n", segmentN);
-  printf("Segment Custom %s\n", segmentC);
 
   txn = newrelic_start_web_transaction(app, transactionN);
   seg = newrelic_start_segment(txn, segmentN, segmentC);
