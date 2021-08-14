@@ -1,6 +1,8 @@
 [submodule "c-sdk"]
 	path = c-sdk
 	url = git@github.com:newrelic/c-sdk.git
+	branch = v1.3.0
 [submodule "hashmap"]
 	path = hashmap
 	url = git@github.com:tidwall/hashmap.c.git
+	branch = v0.4.0

@@ -1,6 +1,7 @@
 #build
 .idea
 .DS_Store
+*.class
 build
 
 # Prerequisites
