@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+    newrelic-lib:
+        build: 
+            dockerfile: Dockerfile.ubi
+            context: .
+        image: tiago-marques/newrelic-jni
+        volumes: 
+            - ./build:/shared/
