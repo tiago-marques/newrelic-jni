@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <hashmap.c>
 #include <string.h>
 /*
  * A standalone example that demonstrates to users how to
