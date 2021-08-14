@@ -7,7 +7,8 @@
         "atomic": "c",
         "memory": "c",
         "mutex": "c",
-        "libnewrelic.h": "c"
+        "libnewrelic.h": "c",
+        "com_dlocal_newrelicjni.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

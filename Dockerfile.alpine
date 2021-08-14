@@ -1,5 +1,8 @@
 FROM adoptopenjdk/openjdk11:alpine-slim
 COPY ./c-sdk .
+COPY ./hashmap .
+COPY com_dlocal_NewRelicJNI.h .
+COPY newrelicjni.c .
 
 RUN apk update 
 RUN apk add bash
@@ -13,6 +16,6 @@ ENV PATH="/usr/local/go/bin:${PATH}"
 RUN go env -w GO111MODULE=auto
 RUN make
 
-RUN gcc -fPIC -Wall -shared -o newrelicjni.so newrelicjni.c -I $JAVA_HOME/include -I $JAVA_HOME/include/linux -I ./c-sdk/include -L. -lnewrelic -lpcre -lpthread -lm -rdynamic
+RUN gcc -fPIC -Wall -shared -o newrelicjni.so newrelicjni.c -I $JAVA_HOME/include -I $JAVA_HOME/include/linux -I ./include -L. -lnewrelic -lpcre -lpthread -lm -rdynamic
 
 CMD cp newrelicjni.so shared/newrelicjni.so.alpine

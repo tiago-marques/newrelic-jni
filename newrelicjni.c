@@ -8,6 +8,7 @@
  * start a transaction and a segment, and cleanly destroy
  * everything.
  */
+#include "hashmap.h"
 #include "libnewrelic.h"
 #include "com_dlocal_NewRelicJNI.h"
 

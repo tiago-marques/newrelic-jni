@@ -2,7 +2,7 @@ version: '3.8'
 services:
     newrelic-lib:
         build: 
-            dockerfile: Dockerfile.ubi
+            dockerfile: Dockerfile.alpine
             context: .
         image: tiago-marques/newrelic-jni
         volumes: 
