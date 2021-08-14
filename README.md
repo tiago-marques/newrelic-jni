@@ -27,6 +27,13 @@ JAVA > JNI > SO > C-DAEMON (running in docker/pod/kubernetes/daemon) > https://o
 
 Any native build that support JNI. (Could be easier when GraalVM supports native JNA)
 
+--
+
+Use docker-compose
+
+1. docker-compose build
+2. docker-compose up
+
 ## Installation
 
 ### generate file .h from NewRelicJNI.java (root project folder from terminal)
