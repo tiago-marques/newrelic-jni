@@ -1,3 +1,7 @@
+#submodules
+c-sdk
+hashmap
+
 #build
 .idea
 .DS_Store
