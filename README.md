@@ -1,4 +1,4 @@
-[NOT OFFICIAL]
+[![New Relic Experimental](https://opensource.newrelic.com/static/Experimental-2a7855f9eed97a968fab9f8aa29b1afe.png)](https://opensource.newrelic.com/oss-category/#community-project)
 
 # New Relic JNI
 
@@ -9,7 +9,7 @@ monitoring capabilities and features to instrument a wide range of applications.
 # Problem
 
 Java is moving forward to native builds. That makes Java Agent not supported anymore.
-If you have an Java apllication on production and can't move on to native because New Relic integrations didnt support native builds yet maybe together we can get one solution to avoid JVM + agent and say welcome to native fastest world java.
+If you have an Java apllication on production and can't move on to native because New Relic integrations didn't support native builds maybe together we can get one solution to avoid JVM agent and say welcome to java native world.
 
 # Idea
 
@@ -20,7 +20,7 @@ Using official C-SDK from New Relic we can create a shared library .so and call 
 3. c-daemon handle secure integrations to One New Relic and we have all our traffic send to New Relic platform.
 
 More simplify:
-JAVA > JNI > SO > C-DAEMON (running) > https://one.newrelic.com/ 
+JAVA > JNI > SO > C-DAEMON (running in docker/pod/kubernetes/daemon) > https://one.newrelic.com/ 
 
 
 # Running
