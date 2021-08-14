@@ -1,3 +1,6 @@
 [submodule "c-sdk"]
 	path = c-sdk
 	url = git@github.com:newrelic/c-sdk.git
+[submodule "hashmap"]
+	path = hashmap
+	url = git@github.com:tidwall/hashmap.c.git

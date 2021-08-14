@@ -29,6 +29,9 @@ Any native build that support JNI. (Could be easier when GraalVM supports native
 
 ## Installation
 
+### generate file .h from NewRelicJNI.java (root project folder from terminal)
+`javac newrelic-jni/src/main/java/com/dlocal/NewRelicJNI.java -h .`
+
 ### Requirements
 
 The New Relic JNI needs C-SDK build to generate a shared library and now this is only possible working on 64-bit Linux operating systems with:
