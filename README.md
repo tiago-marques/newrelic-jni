@@ -1,4 +1,4 @@
-[![New Relic Experimental](https://opensource.newrelic.com/static/Experimental-2a7855f9eed97a968fab9f8aa29b1afe.png)](https://opensource.newrelic.com/oss-category/#community-project)
+[![New Relic Experimental](https://opensource.newrelic.com/static/Community_Project-7c4805883d6396086f907f1c716477cd.png)
 
 # New Relic JNI
 
